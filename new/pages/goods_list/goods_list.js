@@ -48,7 +48,8 @@ Page({
   totalPages: 1,
   // 生命周期函数-监听页面加载
   onLoad: function(options) {
-    this.QueryParams.cid = options.cid;
+    this.QueryParams.cid = options.cid||"";
+    this.QueryParams.query = options.query||"";
     this.getGoodList();
  
     wx.showLoading({
@@ -84,7 +85,7 @@ Page({
       index
     } = e.detail;
     // 2.修改原数组
-    const {
+    let {
       tabs
     } = this.data;
     tabs.forEach((v, i) => i === index ? v.isActive = true : v.isActive = false);
